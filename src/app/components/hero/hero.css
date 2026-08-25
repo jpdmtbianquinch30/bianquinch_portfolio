@@ -49,6 +49,48 @@
   max-width: 460px;
 }
 
+.hero-main p.tagline{
+  margin-top: 12px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--white);
+  font-style: italic;
+}
+
+.hero-main p.subdesc{
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.hero-cta{
+  display: flex;
+  gap: 14px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.btn-primary, .btn-ghost{
+  font-family: 'JetBrains Mono';
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  padding: 14px 24px;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-primary{
+  background: var(--white);
+  color: #000;
+}
+.btn-primary:hover{ background: transparent; color: var(--white); border: 1px solid var(--white); padding: 13px 23px; }
+
+.btn-ghost{
+  border: 1px solid var(--line);
+  color: var(--white);
+}
+.btn-ghost:hover{ border-color: var(--white); }
+
 .info-bar{
   display: flex;
   border-top: 1px solid var(--line);
@@ -138,6 +180,7 @@
 .r3{ animation-delay: 0.4s; }
 .r4{ animation-delay: 0.55s; }
 .r5{ animation-delay: 0.35s; }
+.r6{ animation-delay: 0.7s; }
 
 @keyframes revealUp{
   to{ opacity: 1; transform: translateY(0); }
