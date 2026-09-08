@@ -1,142 +1,51 @@
 <section class="projets">
   <div class="projets-head">
-    <span class="eyebrow reveal r1">PROJETS // 05</span>
+    <span class="eyebrow reveal r1">Projets</span>
     <h1 class="reveal r2">Ce que j'ai construit</h1>
     <p class="lead reveal r3">
-      Applications web, mobiles et desktop — du prototype à la mise en production,
+      Applications web, mobiles et académiques — du prototype à la mise en production,
       avec le code source pour la plupart sur GitHub.
     </p>
   </div>
 
   <div class="projets-grid">
+    @for (project of projects; track project.slug) {
+      <article class="card reveal r4">
+        <div class="cover" [style.background-image]="'url(/images/projets/' + project.slug + '.jpg)'">
+          <span class="status" [class]="project.statusTone">{{ project.status }}</span>
+        </div>
 
-    <article class="card featured reveal r3">
-      <div class="card-top">
-        <span class="tag-status dev">En développement</span>
-      </div>
-      <h3>QUINCH</h3>
-      <p class="desc">Application mobile e-commerce pour le marché sénégalais.</p>
-      <div class="stack">
-        <span class="chip">Flutter</span><span class="chip">Laravel</span>
-        <span class="chip">MySQL</span><span class="chip">Firebase</span>
-      </div>
-      <ul class="features">
-        <li>Paiement Wave / Orange Money</li>
-        <li>Messagerie in-app & notifications push</li>
-        <li>Dashboard admin</li>
-      </ul>
-    </article>
+        <div class="card-body">
+          <h3>{{ project.name }}</h3>
+          <p class="desc">{{ project.description }}</p>
 
-    <article class="card featured reveal r3">
-      <div class="card-top">
-        <span class="tag-status live">Live</span>
-      </div>
-      <h3>FXLIP</h3>
-      <p class="desc">Marque de création digitale — site web professionnel déployé.</p>
-      <div class="stack">
-        <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span>
-      </div>
-      <ul class="features">
-        <li>Développement web · montage vidéo · design graphique</li>
-        <li>12 000+ abonnés TikTok · 126 000+ likes</li>
-      </ul>
-      <div class="card-links">
-        <a href="https://github.com/jpdmtbianquinch30/fxlip" target="_blank" rel="noopener">GitHub ↗</a>
-        <a href="https://www.tiktok.com/@fxlip_3003" target="_blank" rel="noopener">TikTok ↗</a>
-      </div>
-    </article>
+          <div class="stack">
+            @for (tech of project.stack; track tech) {
+              <span class="chip">{{ tech }}</span>
+            }
+          </div>
 
-    <article class="card reveal r4">
-      <div class="card-top">
-        <span class="tag-status star">⭐ Star</span>
-      </div>
-      <h3>QuizProjet</h3>
-      <p class="desc">Application Java de quiz interactif.</p>
-      <div class="stack"><span class="chip">Java</span></div>
-      <div class="card-links">
-        <a href="https://github.com/jpdmtbianquinch30/QuizProjet" target="_blank" rel="noopener">GitHub ↗</a>
-      </div>
-    </article>
+          @if (project.features.length) {
+            <ul class="features">
+              @for (feature of project.features; track feature) {
+                <li>{{ feature }}</li>
+              }
+            </ul>
+          }
 
-    <article class="card reveal r4">
-      <h3>Plateforme Réservation Hôtel</h3>
-      <p class="desc">Application web full-stack avec système de réservation.</p>
-      <div class="stack">
-        <span class="chip">PHP</span><span class="chip">MySQL</span><span class="chip">Bootstrap</span>
-      </div>
-      <ul class="features">
-        <li>Disponibilités & réservation</li>
-        <li>Interface admin</li>
-      </ul>
-      <div class="card-links">
-        <a href="https://github.com/jpdmtbianquinch30/plateformGesHotel" target="_blank" rel="noopener">GitHub ↗</a>
-      </div>
-    </article>
-
-    <article class="card reveal r4">
-      <h3>Application Gestion des Étudiants</h3>
-      <p class="desc">Application desktop complète de gestion académique.</p>
-      <div class="stack"><span class="chip">Java</span><span class="chip">MySQL</span></div>
-      <ul class="features">
-        <li>Inscriptions · notes · suivi des étudiants</li>
-      </ul>
-    </article>
-
-    <article class="card reveal r5">
-      <h3>BIANQ'SHOP</h3>
-      <p class="desc">Site e-commerce local avec catalogue et gestion des commandes.</p>
-      <div class="stack">
-        <span class="chip">HTML</span><span class="chip">CSS</span>
-        <span class="chip">JavaScript</span><span class="chip">PHP</span>
-      </div>
-    </article>
-
-    <article class="card reveal r5">
-      <h3>Application Cashflow</h3>
-      <p class="desc">Calcul et analyse de flux de trésorerie.</p>
-      <div class="stack"><span class="chip">Java</span><span class="chip">Spring Boot</span></div>
-      <ul class="features">
-        <li>Prévisions financières · bilans</li>
-        <li>Tableaux de flux & visualisation des données</li>
-      </ul>
-    </article>
-
-    <article class="card reveal r5">
-      <h3>RH App Frontend</h3>
-      <p class="desc">Application de gestion des ressources humaines — interface moderne.</p>
-      <div class="stack"><span class="chip">TypeScript</span><span class="chip">Angular</span></div>
-      <div class="card-links">
-        <a href="https://github.com/jpdmtbianquinch30/rh-app-frontend" target="_blank" rel="noopener">GitHub ↗</a>
-      </div>
-    </article>
-
-    <article class="card reveal r5">
-      <h3>M1GLBlazor2026</h3>
-      <p class="desc">Projet Blazor présenté en cours — choisi par le professeur.</p>
-      <div class="stack"><span class="chip">C#</span><span class="chip">Blazor</span></div>
-      <div class="card-links">
-        <a href="https://github.com/jpdmtbianquinch30/M1GLBlazor2026" target="_blank" rel="noopener">GitHub ↗</a>
-      </div>
-    </article>
-
-    <article class="card reveal r5">
-      <h3>Design UI/UX — Gestion du Temps</h3>
-      <p class="desc">Prototype d'application mobile complète, parcours utilisateur complet et composants réutilisables.</p>
-      <div class="stack"><span class="chip">Figma</span></div>
-    </article>
-
-    <article class="card reveal r5">
-      <h3>DevOps Test</h3>
-      <p class="desc">Initiation aux pratiques DevOps — pipelines & automatisation.</p>
-      <div class="stack"><span class="chip">JavaScript</span></div>
-      <div class="card-links">
-        <a href="https://github.com/jpdmtbianquinch30/devops-test" target="_blank" rel="noopener">GitHub ↗</a>
-      </div>
-    </article>
-
+          @if (project.links.length) {
+            <div class="card-links">
+              @for (link of project.links; track link.label) {
+                <a [href]="link.url" target="_blank" rel="noopener">{{ link.label }}</a>
+              }
+            </div>
+          }
+        </div>
+      </article>
+    }
   </div>
 
   <a href="https://github.com/jpdmtbianquinch30" target="_blank" rel="noopener" class="see-all reveal r5">
-    Voir tous mes repos sur GitHub ↗
+    Voir tous mes repos sur GitHub
   </a>
 </section>

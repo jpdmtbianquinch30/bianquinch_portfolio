@@ -2,60 +2,96 @@
   <div class="experiences-grid">
     <div class="experiences-visual reveal r1">
       <div class="frame">
-        <span class="corner tl"></span>
-        <span class="corner tr"></span>
-        <span class="corner bl"></span>
-        <span class="corner br"></span>
-        <span class="frame-tag">EXPERIENCE_04</span>
         <img src="/images/experiences.png" alt="Expériences professionnelles">
       </div>
     </div>
 
     <div class="experiences-main">
-      <span class="eyebrow reveal r2">EXPÉRIENCES // 04</span>
-      <h1 class="reveal r3">Terrain</h1>
+      <span class="eyebrow reveal r2">Expériences</span>
+      <h1 class="reveal r3">Terrain & engagement</h1>
 
-      <div class="job-list">
-        <div class="job reveal r3">
-          <div class="job-head">
-            <h3>FXLIP</h3>
-            <span class="job-date">2023 — Présent · Dakar</span>
-          </div>
-          <span class="job-role">Fondateur & Créateur Digital</span>
-          <ul>
-            <li>Création et gestion d'une marque digitale complète</li>
-            <li>Développement web · Design graphique · Montage vidéo</li>
-            <li>12 000+ abonnés TikTok · 126 000+ likes</li>
-            <li>Clients : commerces locaux, associations, particuliers</li>
-          </ul>
-        </div>
-
-        <div class="job reveal r4">
-          <div class="job-head">
-            <h3>CEB Saint-Benoît l'Africain</h3>
-            <span class="job-date">2026 — Présent · Dakar</span>
-          </div>
-          <span class="job-role">Président Coalition des Jeunes</span>
-          <ul>
-            <li>Direction d'un bureau de 15+ membres</li>
-            <li>Organisation d'événements · Gestion budget 60 000 FCFA+</li>
-            <li>Projet SBA — service communautaire en cours</li>
-          </ul>
-        </div>
-
-        <div class="job reveal r5">
-          <div class="job-head">
-            <h3>Larvotto Call</h3>
-            <span class="job-date">2023 · Dakar</span>
-          </div>
-          <span class="job-role">Agent Centre d'Appel</span>
-          <ul>
-            <li>Émission d'appels · Promotion d'un thermostat connecté (IoT)</li>
-            <li>Argumentation commerciale</li>
-            <li>Gestion des objections</li>
-          </ul>
-        </div>
+      <div class="tab-switch reveal r3">
+        <button
+          type="button"
+          class="tab-btn"
+          [class.active]="activeTab() === 'terrain'"
+          (click)="setTab('terrain')">
+          Terrain
+        </button>
+        <button
+          type="button"
+          class="tab-btn"
+          [class.active]="activeTab() === 'engagement'"
+          (click)="setTab('engagement')">
+          Engagement
+        </button>
       </div>
+
+      @if (activeTab() === 'terrain') {
+        <p class="block-sub reveal r3">Ce que j'ai fait pour gagner de l'expérience professionnelle directe.</p>
+
+        <div class="job-list reveal r4">
+          <div class="job">
+            <div class="job-head">
+              <h3>FXLIP</h3>
+              <span class="job-date">2023 — Présent · Dakar</span>
+            </div>
+            <span class="job-role">Fondateur & Créateur Digital</span>
+            <ul>
+              <li>Création et gestion d'une marque digitale complète</li>
+              <li>Développement web · Design graphique · Montage vidéo</li>
+              <li>12 000+ abonnés TikTok · 126 000+ likes</li>
+              <li>Clients : commerces locaux, associations, particuliers</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-head">
+              <h3>Outsourcia</h3>
+              <span class="job-date">Mars – Mai 2023 · Casablanca, Maroc</span>
+            </div>
+            <span class="job-role">Agent Support IT / Opérateur de saisie</span>
+            <ul>
+              <li>Saisie et traitement de données informatiques</li>
+              <li>Support technique premier niveau</li>
+              <li>Contrôle qualité des données</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-head">
+              <h3>Larvotto Call</h3>
+              <span class="job-date">2023 – 2024 · Dakar</span>
+            </div>
+            <span class="job-role">Agent Centre d'Appel</span>
+            <ul>
+              <li>Émission d'appels · Promotion produit IoT</li>
+              <li>Argumentation commerciale</li>
+              <li>Gestion des objections</li>
+            </ul>
+          </div>
+        </div>
+      }
+
+      @if (activeTab() === 'engagement') {
+        <p class="block-sub reveal r3">Ce que je fais par conviction et par goût du collectif.</p>
+
+        <div class="job-list reveal r4">
+          <div class="job">
+            <div class="job-head">
+              <h3>CEB Saint-Benoît l'Africain</h3>
+              <span class="job-date">2026 — Présent · Dakar</span>
+            </div>
+            <span class="job-role">Président Coalition des Jeunes</span>
+            <ul>
+              <li>Direction d'un bureau de 15+ membres</li>
+              <li>Organisation d'événements · Budget 60 000 FCFA+</li>
+              <li>Soirée thématique · Mbakhal · Réunions mensuelles</li>
+              <li>Projet SBA — service communautaire en cours</li>
+            </ul>
+          </div>
+        </div>
+      }
     </div>
   </div>
 </section>

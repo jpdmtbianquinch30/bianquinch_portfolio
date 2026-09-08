@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+
+type ExpTab = 'terrain' | 'engagement';
 
 @Component({
   selector: 'app-experiences',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
   templateUrl: './experiences.html',
   styleUrl: './experiences.css'
 })
-export class Experiences {}
+export class Experiences {
+  activeTab = signal<ExpTab>('terrain');
+
+  setTab(tab: ExpTab) {
+    this.activeTab.set(tab);
+  }
+}

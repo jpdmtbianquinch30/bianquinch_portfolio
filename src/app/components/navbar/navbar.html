@@ -1,38 +1,30 @@
 <nav class="navbar">
-  <div class="player-block">
-    <div class="player-square">B</div>
-    <div class="player-text">
-      <span class="name">BIANQUINCH</span>
-      <span class="tag">FXLIP // DAKAR</span>
-    </div>
+  <a routerLink="/accueil" class="wordmark">Bianquinch</a>
+
+  <div class="nav-links">
+    <a routerLink="/accueil" routerLinkActive="active">Accueil</a>
+    <a routerLink="/apropos" routerLinkActive="active">À propos</a>
+    <a routerLink="/parcours" routerLinkActive="active">Parcours</a>
+    <a routerLink="/experiences" routerLinkActive="active">Expériences</a>
+    <a routerLink="/projets" routerLinkActive="active">Projets</a>
+    <a routerLink="/creations" routerLinkActive="active">Créations</a>
+    <a routerLink="/explorations" routerLinkActive="active">Explorations</a>
   </div>
 
-  <div class="level-select">
-  <a routerLink="/accueil" routerLinkActive="active" class="tile"><span class="num">01</span><span class="label">Accueil</span></a>
-  <a routerLink="/apropos" routerLinkActive="active" class="tile"><span class="num">02</span><span class="label">À propos</span></a>
-  <a routerLink="/parcours" routerLinkActive="active" class="tile"><span class="num">03</span><span class="label">Parcours</span></a>
-  <a routerLink="/experiences" routerLinkActive="active" class="tile"><span class="num">04</span><span class="label">Expériences</span></a>
-  <a routerLink="/projets" routerLinkActive="active" class="tile"><span class="num">05</span><span class="label">Projets</span></a>
-  <a routerLink="/creations" routerLinkActive="active" class="tile"><span class="num">06</span><span class="label">Créations</span></a>
-  <a routerLink="/explorations" routerLinkActive="active" class="tile"><span class="num">07</span><span class="label">Explorations</span></a>
-</div>
+  <a routerLink="/contact" class="cta">Contact</a>
 
-  <a routerLink="/contact" class="cta-tile">
-    <span class="cursor"></span>CONTACT
-  </a>
-
-  <button class="burger" (click)="toggleMenu()">
-    MENU <span class="bars"><span></span><span></span><span></span></span>
+  <button class="burger" (click)="toggleMenu()" aria-label="Ouvrir le menu">
+    <span></span><span></span><span></span>
   </button>
 </nav>
 
 <div class="mobile-menu" [class.open]="menuOpen">
-  <a routerLink="/accueil" routerLinkActive="active" (click)="closeMenu()"><span class="num">01</span>Accueil</a>
-  <a routerLink="/apropos" routerLinkActive="active" (click)="closeMenu()"><span class="num">02</span>À propos</a>
-  <a routerLink="/parcours" routerLinkActive="active" (click)="closeMenu()"><span class="num">03</span>Parcours</a>
-  <a routerLink="/experiences" routerLinkActive="active" (click)="closeMenu()"><span class="num">04</span>Expériences</a>
-  <a routerLink="/projets" routerLinkActive="active" (click)="closeMenu()"><span class="num">05</span>Projets</a>
-  <a routerLink="/creations" routerLinkActive="active" (click)="closeMenu()"><span class="num">06</span>Créations</a>
-  <a routerLink="/explorations" routerLinkActive="active" (click)="closeMenu()"><span class="num">07</span>Explorations</a>
-  <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()"><span class="num">08</span>Contact</a>
+  <a routerLink="/accueil" routerLinkActive="active" (click)="closeMenu()">Accueil</a>
+  <a routerLink="/apropos" routerLinkActive="active" (click)="closeMenu()">À propos</a>
+  <a routerLink="/parcours" routerLinkActive="active" (click)="closeMenu()">Parcours</a>
+  <a routerLink="/experiences" routerLinkActive="active" (click)="closeMenu()">Expériences</a>
+  <a routerLink="/projets" routerLinkActive="active" (click)="closeMenu()">Projets</a>
+  <a routerLink="/creations" routerLinkActive="active" (click)="closeMenu()">Créations</a>
+  <a routerLink="/explorations" routerLinkActive="active" (click)="closeMenu()">Explorations</a>
+  <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a>
 </div>

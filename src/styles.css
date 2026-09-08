@@ -1,12 +1,59 @@
+/* ==========================================================
+   Fondations — direction "sombre élégant"
+   ========================================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  /* Fond */
+  --ink: #0E1013;
+  --surface: #14171C;
+  --surface-alt: #191D24;
+
+  /* Bordures — toujours en filet 1px, jamais d'ombre portée */
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.18);
+
+  /* Texte */
+  --text: #ECEDEF;
+  --text-muted: #9BA1AC;
+  --text-faint: #5D6470;
+
+  /* Accent unique — à réserver aux liens actifs et à un détail par section */
+  --accent: #C9A46B;
+  --accent-dim: rgba(201, 164, 107, 0.14);
+
+  /* Typographies */
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Public Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --gutter: clamp(24px, 6vw, 80px);
+}
+
 html, body {
-  background: #000000;
-  color: #FFFFFF;
-  font-family: 'Inter', sans-serif;
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
 }
