@@ -8,15 +8,17 @@
     <a routerLink="/experiences" routerLinkActive="active">Expériences</a>
     <a routerLink="/projets" routerLinkActive="active">Projets</a>
     <a routerLink="/creations" routerLinkActive="active">Créations</a>
-    <a routerLink="/explorations" routerLinkActive="active">Explorations</a>
+    <a routerLink="/explorations" routerLinkActive="active" (click)="closeMenu()">Compétences</a>
   </div>
 
   <a routerLink="/contact" class="cta">Contact</a>
 
-  <button class="burger" (click)="toggleMenu()" aria-label="Ouvrir le menu">
-    <span></span><span></span><span></span>
-  </button>
+ <button class="burger" [class.open]="menuOpen" (click)="toggleMenu()" aria-label="Ouvrir le menu">
+  <span></span><span></span><span></span>
+</button>
 </nav>
+
+<div class="mobile-backdrop" [class.open]="menuOpen" (click)="closeMenu()"></div>
 
 <div class="mobile-menu" [class.open]="menuOpen">
   <a routerLink="/accueil" routerLinkActive="active" (click)="closeMenu()">Accueil</a>
@@ -25,6 +27,6 @@
   <a routerLink="/experiences" routerLinkActive="active" (click)="closeMenu()">Expériences</a>
   <a routerLink="/projets" routerLinkActive="active" (click)="closeMenu()">Projets</a>
   <a routerLink="/creations" routerLinkActive="active" (click)="closeMenu()">Créations</a>
-  <a routerLink="/explorations" routerLinkActive="active" (click)="closeMenu()">Explorations</a>
-  <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a>
+  <a routerLink="/explorations" routerLinkActive="active" (click)="closeMenu()">Compétences</a>
+  <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()" class="mobile-cta">Contact</a>
 </div>

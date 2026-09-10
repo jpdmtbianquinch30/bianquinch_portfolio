@@ -45,7 +45,20 @@
 .c-label{ font-family:'JetBrains Mono'; font-size:10px; color:var(--dim); letter-spacing:1px; }
 .c-value{ font-size:16px; font-weight:600; }
 
-.socials{ display:flex; flex-wrap:wrap; gap: 20px; margin-top: 28px; }
+.socials{ display:flex; flex-wrap:wrap; gap: 14px; margin-top: 28px; }
+.social-icon{
+  width: 42px; height: 42px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line);
+  color: var(--dim);
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.social-icon svg{ width: 18px; height: 18px; }
+.social-icon:hover{
+  color: var(--white);
+  border-color: var(--white);
+  transform: translateY(-2px);
+}
 .socials a{
   font-family:'JetBrains Mono'; font-size:12px; letter-spacing:0.5px;
   color: var(--dim); text-decoration:none; border-bottom: 1px solid transparent;
@@ -53,15 +66,16 @@
 }
 .socials a:hover{ color: var(--white); border-color: var(--white); }
 
-.contact-cta{ margin-top: 36px; }
-.btn-primary{
+.contact-cta{ display:flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+.btn-primary, .btn-ghost{
   display:inline-block;
   font-family:'JetBrains Mono'; font-size:12px; letter-spacing:0.5px;
-  padding: 15px 26px; text-decoration:none;
-  background: var(--white); color:#000; transition: all 0.2s ease;
+  padding: 15px 26px; text-decoration:none; transition: all 0.2s ease;
 }
+.btn-primary{ background: var(--white); color:#000; }
 .btn-primary:hover{ background: transparent; color: var(--white); border:1px solid var(--white); padding: 14px 25px; }
-
+.btn-ghost{ border:1px solid var(--line); color:var(--white); }
+.btn-ghost:hover{ border-color: var(--white); }
 .contact-visual{ display:flex; justify-content:center; }
 .frame{
   position: relative; width: 100%; aspect-ratio: 4 / 5;

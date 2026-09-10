@@ -1,6 +1,5 @@
 <section class="projets">
   <div class="projets-head">
-    <span class="eyebrow reveal r1">Projets</span>
     <h1 class="reveal r2">Ce que j'ai construit</h1>
     <p class="lead reveal r3">
       Applications web, mobiles et académiques — du prototype à la mise en production,
@@ -9,43 +8,33 @@
   </div>
 
   <div class="projets-grid">
-    @for (project of projects; track project.slug) {
-      <article class="card reveal r4">
-        <div class="cover" [style.background-image]="'url(/images/projets/' + project.slug + '.jpg)'">
-          <span class="status" [class]="project.statusTone">{{ project.status }}</span>
+    <article
+      class="card reveal r4"
+      *ngFor="let p of projects"
+      [style.--img]="'url(' + p.image + ')'">
+
+      <span class="badge" [ngClass]="p.badgeType">{{ p.badge }}</span>
+
+      <div class="card-content">
+        <h3>{{ p.title }}</h3>
+        <p class="desc">{{ p.desc }}</p>
+
+        <div class="stack">
+          <span class="chip" *ngFor="let t of p.tags">{{ t }}</span>
         </div>
 
-        <div class="card-body">
-          <h3>{{ project.name }}</h3>
-          <p class="desc">{{ project.description }}</p>
+        <ul class="features" *ngIf="p.features?.length">
+          <li *ngFor="let f of p.features">{{ f }}</li>
+        </ul>
 
-          <div class="stack">
-            @for (tech of project.stack; track tech) {
-              <span class="chip">{{ tech }}</span>
-            }
-          </div>
-
-          @if (project.features.length) {
-            <ul class="features">
-              @for (feature of project.features; track feature) {
-                <li>{{ feature }}</li>
-              }
-            </ul>
-          }
-
-          @if (project.links.length) {
-            <div class="card-links">
-              @for (link of project.links; track link.label) {
-                <a [href]="link.url" target="_blank" rel="noopener">{{ link.label }}</a>
-              }
-            </div>
-          }
+        <div class="card-links" *ngIf="p.links?.length">
+          <a *ngFor="let l of p.links" [href]="l.url" target="_blank" rel="noopener">{{ l.label }} ↗</a>
         </div>
-      </article>
-    }
+      </div>
+    </article>
   </div>
 
   <a href="https://github.com/jpdmtbianquinch30" target="_blank" rel="noopener" class="see-all reveal r5">
-    Voir tous mes repos sur GitHub
+    Voir tous mes repos sur GitHub ↗
   </a>
 </section>

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-
-type StatusTone = 'live' | 'dev' | 'done' | 'exploration';
+import { CommonModule } from '@angular/common';
 
 interface ProjectLink {
   label: string;
@@ -8,171 +7,144 @@ interface ProjectLink {
 }
 
 interface Project {
-  name: string;
-  slug: string;
-  stack: string[];
-  status: string;
-  statusTone: StatusTone;
-  description: string;
-  features: string[];
-  links: ProjectLink[];
-  coverAlt: string;
+  title: string;
+  image: string;
+  badge: string;
+  badgeType: 'dev' | 'done' | 'live' | 'exploration';
+  desc: string;
+  tags: string[];
+  features?: string[];
+  links?: ProjectLink[];
 }
 
 @Component({
   selector: 'app-projets',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './projets.html',
   styleUrl: './projets.css',
 })
 export class Projets {
+
   projects: Project[] = [
     {
-      name: 'QUINCH',
-      slug: 'quinch',
-      stack: ['Laravel', 'Angular', 'PostgreSQL', 'Docker'],
-      status: 'En développement',
-      statusTone: 'dev',
-      description: "Application mobile e-commerce pour le marché sénégalais.",
+      title: 'QUINCH',
+      image: '/images/projects/quinch.png',
+      badge: 'En développement',
+      badgeType: 'dev',
+      desc: 'Application mobile e-commerce pour le marché sénégalais.',
+      tags: ['Laravel', 'Angular', 'PostgreSQL', 'Docker'],
       features: [
         'Paiement Wave / Orange Money',
         'Messagerie in-app · Notifications push',
         'Dashboard admin',
       ],
-      links: [{ label: 'GitHub (test disponible)', url: '#' }],
-      coverAlt: 'Smartphone, mobile, marché africain',
+      links: [{ label: 'GitHub (test disponible)', url: 'https://github.com/jpdmtbianquinch30/QUINCH' }],
     },
     {
-      name: 'QuizProjet',
-      slug: 'quizprojet',
-      stack: ['Spring Boot', 'Java 17', 'Angular 20', 'PostgreSQL', 'Docker'],
-      status: 'Terminé · Projet de groupe (4 personnes) · Méthode SCRUM',
-      statusTone: 'done',
-      description: 'Plateforme de quiz interactive avec génération de questions par IA.',
+      title: 'QuizProjet',
+      image: '/images/projects/quizprojet.png',
+      badge: 'Terminé · Projet de groupe (4 personnes) · Méthode SCRUM',
+      badgeType: 'done',
+      desc: 'Plateforme de quiz interactive avec génération de questions par IA.',
+      tags: ['Spring Boot', 'Java 17', 'Angular 20', 'PostgreSQL', 'Docker'],
       features: [
         '3 rôles : Admin · Évaluateur · Apprenant',
         'Génération de questions par IA (Groq / Llama 3.3)',
         'Compte à rebours · Feedback visuel en temps réel',
-        'Classement des scores · Groupes d\u2019apprenants',
+        'Classement des scores · Groupes d\'apprenants',
         'Sécurité JWT',
       ],
       links: [
         { label: 'GitHub', url: 'https://github.com/jpdmtbianquinch30/QuizProjet' },
-        { label: 'Vidéo démo', url: '#' },
+        { label: 'Vidéo démo', url: '/videos/EASYQUIZZ.mp4' },
       ],
-      coverAlt: 'Quiz, apprentissage, tech',
     },
     {
-      name: 'PARLE-MOI',
-      slug: 'parle-moi',
-      stack: ['Spring Boot', 'Angular', 'PostgreSQL', 'Docker'],
-      status: 'Terminé · Projet client',
-      statusTone: 'done',
-      description: "Site web développé pour une cliente — plateforme d'écoute et de réservation.",
-      features: [],
+      title: 'PARLE-MOI',
+      image: '/images/projects/parlemoi.png',
+      badge: 'Terminé · Projet client',
+      badgeType: 'done',
+      desc: 'Site web développé pour une cliente — plateforme d\'écoute et de réservation.',
+      tags: ['Spring Boot', 'Angular', 'PostgreSQL', 'Docker'],
       links: [
-        { label: 'GitHub', url: '#' },
-        { label: 'Site live', url: '#' },
+        { label: 'GitHub', url: 'https://github.com/jpdmtbianquinch30/PARLEMOI' },
+        { label: 'Site live (indisponible)', url: '#' },
       ],
-      coverAlt: 'Écoute, relation, humain',
     },
     {
-      name: 'Hotel',
-      slug: 'hotel',
-      stack: ['Laravel', 'Angular', 'PostgreSQL', 'Docker'],
-      status: 'Terminé',
-      statusTone: 'done',
-      description: 'Plateforme web de réservation de chambres d\u2019hôtel.',
+      title: 'Hotel',
+      image: '/images/projects/galsenhotel.png',
+      badge: 'Terminé',
+      badgeType: 'done',
+      desc: 'Plateforme web de réservation de chambres d\'hôtel.',
+      tags: ['Laravel', 'Angular', 'PostgreSQL', 'Docker'],
       features: [
         'Gestion des disponibilités · Réservation en ligne',
         'Interface admin complète',
       ],
-      links: [{ label: 'GitHub', url: 'https://github.com/jpdmtbianquinch30/plateformGesHotel' }],
-      coverAlt: 'Hôtel, architecture, chambre',
+      links: [{ label: 'GitHub', url: 'https://github.com/jpdmtbianquinch30/Hotel' }],
     },
     {
-      name: 'FXLIP',
-      slug: 'fxlip',
-      stack: ['HTML', 'CSS', 'JavaScript'],
-      status: 'Live',
-      statusTone: 'live',
-      description: 'Marque de création digitale — site web professionnel déployé.',
+      title: 'FXLIP',
+      image: '/images/projects/fxlip.png',
+      badge: 'Live',
+      badgeType: 'live',
+      desc: 'Marque de création digitale — site web professionnel déployé.',
+      tags: ['HTML', 'CSS', 'JavaScript'],
       features: [
         'Développement web · Montage vidéo · Design graphique',
-        '12 000+ abonnés TikTok · 126 000+ likes',
+        '14 000+ abonnés TikTok · 126 000+ likes',
       ],
       links: [
         { label: 'GitHub', url: 'https://github.com/jpdmtbianquinch30/fxlip' },
         { label: 'TikTok', url: 'https://www.tiktok.com/@fxlip_3003' },
-        { label: 'Site', url: '#' },
+        { label: 'Site', url: 'https://jpdmtbianquinch30.github.io/fxlip/' },
       ],
-      coverAlt: 'Design, créatif, studio',
     },
     {
-      name: 'M1GLBlazor2026',
-      slug: 'm1glblazor2026',
-      stack: ['C#', 'Blazor', 'PostgreSQL'],
-      status: 'Terminé',
-      statusTone: 'done',
-      description: 'Application web Blazor — connexion et recherche par libellé et description.',
-      features: [],
-      links: [{ label: 'GitHub', url: 'https://github.com/jpdmtbianquinch30/M1GLBlazor2026' }],
-      coverAlt: 'Code, interface, web',
-    },
-    {
-      name: 'Application Cashflow',
-      slug: 'cashflow',
-      stack: ['HTML', 'CSS', 'JavaScript'],
-      status: 'Terminé',
-      statusTone: 'done',
-      description: 'Outil de calcul et analyse de flux de trésorerie.',
+      title: 'Application Cashflow',
+      image: '/images/projects/cashflow.png',
+      badge: 'Terminé',
+      badgeType: 'done',
+      desc: 'Outil de calcul et analyse de flux de trésorerie.',
+      tags: ['HTML', 'CSS', 'JavaScript'],
       features: [
         'Prévisions financières · Bilans',
         'Tableaux de flux · Visualisation des données',
       ],
-      links: [{ label: 'GitHub', url: '#' }],
-      coverAlt: 'Finance, graphiques, business',
-    },
-    {
-      name: 'PassyBeauty',
-      slug: 'passybeauty',
-      stack: ['PHP', 'MySQL'],
-      status: 'Terminé',
-      statusTone: 'done',
-      description: 'Site e-commerce local — catalogue produits et gestion des commandes.',
-      features: [],
       links: [
-        { label: 'GitHub', url: '#' },
-        { label: 'Site', url: '#' },
+        { label: 'GitHub', url: 'https://github.com/jpdmtbianquinch30/CashFlowCalcul' },
+        { label: 'Test', url: 'test/Simulateur_CashFlow_AVICOLA.html' },
       ],
-      coverAlt: 'Beauté, boutique, e-commerce',
+
     },
     {
-      name: 'ChromaDB — Recherche Sémantique ISI',
-      slug: 'chromadb-recherche-semantique-isi',
-      stack: ['Python', 'ChromaDB', 'TF-IDF', 'LSA', 'scikit-learn'],
-      status: 'Terminé · Projet académique M1',
-      statusTone: 'done',
-      description: 'Pipeline de recherche sémantique en 4 services indépendants sur le corpus ISI Keur Massar.',
+      title: 'PassyBeauty',
+      image: '/images/projects/passybeauty.png',
+      badge: 'Terminé',
+      badgeType: 'done',
+      desc: 'Site e-commerce local — catalogue produits et gestion des commandes.',
+      tags: ['PHP', 'MySQL'],
+      links: [
+        { label: 'GitHub', url: 'https://github.com/jpdmtbianquinch30/passyBeauty' },
+        { label: 'Site non disponible pour le moment', url: 'images/projects/passybeauty.png' },
+        { label: 'Video Demo', url: 'videos/VidPassyshop.mp4' },
+      ],
+    },
+    {
+      title: 'ChromaDB — Recherche Sémantique ISI',
+      image: '/images/projects/chromadb.png',
+      badge: 'Terminé · Projet académique M1',
+      badgeType: 'done',
+      desc: 'Pipeline de recherche sémantique en 4 services indépendants sur le corpus ISI Keur Massar.',
+      tags: ['Python', 'ChromaDB', 'TF-IDF', 'LSA', 'scikit-learn'],
       features: [
         'Extraction PDF · Chunking par fenêtre glissante',
         'Embedding local TF-IDF + LSA',
         'Indexation ChromaDB persistante',
         'Recherche sémantique avec scores cosinus',
       ],
-      links: [{ label: 'GitHub', url: '#' }],
-      coverAlt: 'IA, données, vecteurs, recherche',
-    },
-    {
-      name: 'DevOps Test',
-      slug: 'devops-test',
-      stack: ['JavaScript'],
-      status: 'Exploration',
-      statusTone: 'exploration',
-      description: 'Initiation aux pratiques DevOps — pipelines et automatisation.',
-      features: [],
-      links: [{ label: 'GitHub', url: 'https://github.com/jpdmtbianquinch30/devops-test' }],
-      coverAlt: 'Serveurs, infrastructure, CI/CD',
+      links: [{ label: 'GitHub', url: 'https://github.com/jpdmtbianquinch30/isi_chromadb_project' }],
     },
   ];
 }

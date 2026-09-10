@@ -1,83 +1,180 @@
 <section class="creations">
-  <div class="creations-head">
-    <div class="creations-visual reveal r1">
-      <div class="frame">
-        <span class="corner tl"></span>
-        <span class="corner tr"></span>
-        <span class="corner bl"></span>
-        <span class="corner br"></span>
-        <span class="frame-tag">CREATION_06</span>
-        <img src="/images/creation.png" alt="Créations — design & montage vidéo">
-      </div>
+
+  <!-- TITRE -->
+  <div class="creations-title">
+    <h1 class="reveal r2">Créations & Services</h1>
+    <p class="lead reveal r3">
+      Sous la marque <strong>FXLIP</strong>, je transforme vos idées en réalités
+      digitales — du code propre au pixel parfait, depuis Dakar.
+    </p>
+  </div>
+
+  <!-- BLOC 1 — CHIFFRES CLÉS -->
+  <div class="stats-bar reveal r3">
+    <div class="stat">
+      <span class="stat-num">12 000+</span>
+      <span class="stat-label">Abonnés TikTok</span>
     </div>
-    <div class="creations-intro">
-      <span class="eyebrow reveal r2">CRÉATIONS // 06</span>
-      <h1 class="reveal r3">Design, vidéo & services</h1>
-      <p class="lead reveal r4">
-        Sous la marque <strong>FXLIP</strong>, je propose du développement web, du montage
-        vidéo et du design graphique aux commerces, associations et particuliers de Dakar
-        et d'ailleurs.
-      </p>
-      <div class="stat-bar reveal r5">
-        <div class="stat"><span class="stat-num">12 000+</span><span class="stat-label">Abonnés TikTok</span></div>
-        <div class="stat"><span class="stat-num">126 000+</span><span class="stat-label">Likes</span></div>
-        <div class="stat"><span class="stat-num">2023</span><span class="stat-label">Depuis</span></div>
-      </div>
-      <a href="https://www.tiktok.com/@fxlip_3003" target="_blank" rel="noopener" class="btn-ghost reveal r5">Voir @fxlip_3003 sur TikTok ↗</a>
+    <div class="stat">
+      <span class="stat-num">126 000+</span>
+      <span class="stat-label">Likes</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">3+</span>
+      <span class="stat-label">Années</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">2023</span>
+      <span class="stat-label">Depuis</span>
     </div>
   </div>
 
+  <!-- BLOC 2 — GALERIE VISUELLE -->
+  <div class="gallery-section">
+    <span class="eyebrow reveal r3">GALERIE</span>
+    <div class="gallery-grid">
+      <button
+        type="button"
+        class="gallery-item reveal r4"
+        *ngFor="let item of gallery"
+        (click)="open(item)"
+        [style.--img]="!isVideo(item) ? 'url(' + item.src + ')' : null">
+        <video
+          *ngIf="isVideo(item)"
+          #vid
+          class="gallery-video"
+          [src]="item.src"
+          muted
+          loop
+          autoplay
+          playsinline
+          preload="metadata"
+          (loadedmetadata)="vid.muted = true; vid.volume = 0">
+        </video>
+        <span class="gallery-tag">{{ item.category }}</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" *ngIf="selected" (click)="close()">
+    <button type="button" class="lightbox-close" (click)="close()">✕</button>
+    <video
+      *ngIf="isVideo(selected)"
+      class="lightbox-video"
+      [src]="selected.src"
+      controls
+      autoplay
+      (click)="$event.stopPropagation()">
+    </video>
+    <img
+      *ngIf="!isVideo(selected)"
+      [src]="selected.src"
+      [alt]="selected.alt"
+      (click)="$event.stopPropagation()">
+    <span class="lightbox-caption">{{ selected.alt }}</span>
+  </div>
+
+  <!-- BLOC 3 — SERVICES -->
   <div class="services">
-    <span class="eyebrow reveal r3">SERVICES</span>
-    <div class="services-grid">
-      <div class="service reveal r3">
-        <h3>Développement Web</h3>
-        <p>Sites vitrines · E-commerce · Applications web sur mesure · Landing pages · Portfolios · Dashboards</p>
-        <span class="price">À partir de 50 000 FCFA</span>
-      </div>
-      <div class="service reveal r4">
-        <h3>Montage Vidéo</h3>
-        <p>TikTok · Reels · YouTube Shorts · Vidéos événementielles · Sous-titres · Transitions · Sound design</p>
-        <span class="price">À partir de 15 000 FCFA</span>
-      </div>
-      <div class="service reveal r4">
-        <h3>Design Graphique</h3>
-        <p>Logos · Affiches · Flyers · Identité visuelle · Posts réseaux sociaux · Miniatures YouTube</p>
-        <span class="price">À partir de 10 000 FCFA</span>
-      </div>
-      <div class="service reveal r5">
-        <h3>Documents Professionnels</h3>
-        <p>CV moderne · Lettre de motivation · Portfolio · Présentation PowerPoint · Mise en page</p>
-        <span class="price">À partir de 5 000 FCFA</span>
-      </div>
+  <span class="eyebrow reveal r3">SERVICES</span>
+  <div class="services-grid">
+    <div class="service-card reveal r3">
+      <span class="service-num">01</span>
+      <h3>Développement Web</h3>
+      <ul>
+        <li>Sites vitrines</li>
+        <li>E-commerce</li>
+        <li>Landing pages</li>
+        <li>Dashboards</li>
+      </ul>
+      <span class="price">50 000 FCFA+</span>
+    </div>
+    <div class="service-card reveal r4">
+      <span class="service-num">02</span>
+      <h3>Montage Vidéo</h3>
+      <ul>
+        <li>TikTok · Reels</li>
+        <li>YouTube Shorts</li>
+        <li>Vidéos événementielles</li>
+        <li>Transitions</li>
+      </ul>
+      <span class="price">15 000 FCFA+</span>
+    </div>
+    <div class="service-card reveal r4">
+      <span class="service-num">03</span>
+      <h3>Design Graphique</h3>
+      <ul>
+        <li>Logos · Affiches</li>
+        <li>Flyers · Identité</li>
+        <li>Posts réseaux</li>
+        <li>Miniatures YT</li>
+      </ul>
+      <span class="price">10 000 FCFA+</span>
+    </div>
+    <div class="service-card reveal r5">
+      <span class="service-num">04</span>
+      <h3>Documents Pro</h3>
+      <ul>
+        <li>CV · Lettre</li>
+        <li>Portfolio</li>
+        <li>PowerPoint</li>
+        <li>Mise en page</li>
+      </ul>
+      <span class="price">5 000 FCFA+</span>
     </div>
   </div>
+</div>
 
+  <!-- BLOC 4 — PACKS -->
   <div class="packs">
     <span class="eyebrow reveal r4">PACKS DISPONIBLES</span>
     <div class="packs-list">
       <div class="pack reveal r4">
         <span class="pack-name">Pack Starter</span>
+        <span class="pack-arrow">→</span>
         <span class="pack-desc">Logo + Affiche + CV</span>
         <span class="pack-price">35 000 FCFA</span>
       </div>
       <div class="pack reveal r4">
         <span class="pack-name">Pack Business</span>
+        <span class="pack-arrow">→</span>
         <span class="pack-desc">Logo + Site + Catalogue</span>
         <span class="pack-price">120 000 FCFA</span>
       </div>
       <div class="pack reveal r5">
         <span class="pack-name">Pack Social Media</span>
+        <span class="pack-arrow">→</span>
         <span class="pack-desc">Montage TikTok + Reels x4</span>
         <span class="pack-price">40 000 FCFA</span>
       </div>
       <div class="pack reveal r5">
         <span class="pack-name">Pack Digital</span>
+        <span class="pack-arrow">→</span>
         <span class="pack-desc">Site + App + Déploiement</span>
         <span class="pack-price">Sur devis</span>
       </div>
     </div>
   </div>
 
-  <a routerLink="/contact" class="btn-primary reveal r5">Discuter d'un projet</a>
+  <!-- BLOC 5 — RÉSEAUX FXLIP -->
+  <div class="socials-block reveal r5">
+    <a href="https://www.tiktok.com/@fxlip_3003" target="_blank" rel="noopener" class="social-btn">TikTok @fxlip_3003</a>
+    <a href="https://jpdmtbianquinch30.github.io/fxlip/" target="_blank" rel="noopener" class="social-btn">Site FXLIP</a>
+  </div>
+
+  <!-- BLOC 6 — CTA FINAL -->
+  <div class="final-cta reveal r5">
+    <h2>Tu as un projet en tête ?</h2>
+<div class="cta-buttons">
+  <a routerLink="/contact" class="btn-primary">Me contacter</a>
+  <a href="https://wa.me/221707672792" target="_blank" rel="noopener" class="btn-ghost">WhatsApp</a>
+  <a href="mailto:peoplechoicesn@gmail.com" class="btn-ghost">Email</a>
+</div>
+    <div class="cta-contacts">
+      <span>+221 70 767 27 92</span>
+      <span>peoplechoicesn@gmail.com</span>
+    </div>
+  </div>
+
 </section>
